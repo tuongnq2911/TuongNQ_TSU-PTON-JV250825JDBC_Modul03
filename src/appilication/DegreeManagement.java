@@ -83,7 +83,9 @@ public class DegreeManagement {
     public static void deleteDegree(Scanner scanner) {
         System.out.println("Mời banh nhập ID cần xoá: ");
         int deleteEmployeeID = Integer.parseInt(scanner.nextLine());
-        if (DegreeBusiness.findDegreeByEmployeeID(deleteEmployeeID) != null) {
+        System.out.println("Bạn hãy nhập vào chữ ok để chắc chắn muốn xoá");
+        String accept = scanner.nextLine().trim().toLowerCase();
+        if (accept.equals("ok")) { if (DegreeBusiness.findDegreeByEmployeeID(deleteEmployeeID) != null) {
             if (DegreeBusiness.deleteDegrees(deleteEmployeeID)){
                 System.out.println("Xoá thành công!");
             }else {
@@ -92,6 +94,10 @@ public class DegreeManagement {
         }else {
             System.err.println("Không tìm thấy ID cần xoá");
         }
+        }else {
+            System.out.println("Xoá thất bại");
+        }
+
     }
 
     public static void searchDegreeByDegreeName(Scanner scanner) {
